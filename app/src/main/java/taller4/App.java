@@ -3,7 +3,7 @@
  */
 package taller4;
 
-
+import java.util.Random;
 
 public class App {
     
@@ -25,6 +25,35 @@ public class App {
      * hasta ese número separados por comas en grupos de hasta 8 números.
      * 
     */
+    public static String num_impar(int nro){
+        try {
+            if (nro < 100 || nro > 500) {
+                return "incoreecto";
+            }
+        
+            String resultado = "";  
+            int contador = 0;  
+        
+            for (int n = 1; n <= nro; n = n + 2) {
+                resultado = resultado + n;
+                contador = contador + 1;
+        
+                if (n < nro - 1) {
+                    resultado = resultado + ", ";
+                }
+        
+                
+            }
+        
+            return resultado;
+
+        
+        } catch (Exception e) {
+
+        return "error";
+
+        }
+    }
 
     /* 2. 	Escriba una función que reciba un entero N mayor de 2  y retorne un string cono esos N términos de la 
     serie de Fibonacci (La sucesión de Fibonacci se trata de una serie infinita de números naturales que empieza con un 0 y un 1 
@@ -33,6 +62,30 @@ public class App {
      * 
      * 
     */
+    public static String n_fibonacci(int nro) {
+        try {
+            int first = 0;
+            int second = 1;
+            String resultado = first + ", " + second;
+
+            if (nro <= 2) {
+                return "no valido";
+            }
+
+            for (int number = 2; number <= nro; number++) {
+                int next_n = first + second;
+
+                resultado = resultado + ", " + next_n;
+                first = second;
+                second = next_n;
+            }
+            return resultado;
+
+        } catch (Exception e) {
+            return "error";
+        }
+    }
+
 
     /* 
      * 3.	Diseñar y desarrollar una función que NO reciba datos de entrada, genere aleatoriamente un número entre 2 y 355, 
@@ -53,6 +106,29 @@ public class App {
         Llame la función desde el main e imprimir el resultado arrojado.
     */
 
+public static int n_generados(int nro_initial, int nro_end) {
+        try {
+
+            if (nro_initial >= nro_end) {
+                return -1;
+            }
+
+            Random rand = new Random();
+            int n_pares = 0;
+
+            for (int i = 0; i < 900; i++) {
+                int nro_rdm = rand.nextInt(nro_end - nro_initial + 1) + nro_initial;
+                if (nro_rdm % 2 == 0) {
+                    n_pares++;
+                }
+            }
+
+            return n_pares;
+
+        } catch (Exception e) {
+            return -1;
+        }
+    }
 
 
 
@@ -63,6 +139,24 @@ public class App {
 
       
     */
+public static int suma_ramdom(int cant) {
+        try {
+            Random rand = new Random();
+            int suma = 0;
+            int rang_1 = 56;
+            int rang_2 = 200;
+
+            for (int nro_c = 0; nro_c < cant; nro_c++) {
+                int numeroAleatorio = rand.nextInt(rang_2 - rang_1 + 1) + rang_1;
+                suma += numeroAleatorio;
+            }
+
+            return suma;
+        } catch (Exception e) {
+
+            return -1;
+        }
+    }
 
 
     /* 6.	Se requiere una función para simular el sorteo de una lotería, de acuerdo con las siguientes condiciones:
