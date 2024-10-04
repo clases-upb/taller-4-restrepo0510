@@ -10,11 +10,35 @@ public class App {
 
     public static void main(String[] args) {
         
-        //Coloque los llamados a cada función de acuerdo con cada enunciado
-        //codifique el control de errores para el main
+        try {
+            //punto 1
+            System.out.println(num_impar(100));
+            //punto 2
+            System.out.println(n_fibonacci(7));
+            // punto 3
+            Random random = new Random();
+            int veces = random.nextInt(11) + 20;
+            System.out.println(veces);
 
+            for (int i = 0; i < veces; i++) {
+                double resultado = raizc_aleo();
+
+                System.out.println(resultado);
+            }
+
+            // punto 4
+            System.out.println(n_generados(10, 100));
+            // punto 5 
+            System.out.println(suma_ramdom(56));
+            // punto 6
+            System.out.println(simularSorteo());
+        } catch (Exception e) {
+
+        }
 
     }
+
+    
 
     /* TODAS LAS FUNCIONES DEBEN LLEVAR CONTROL DE ERRORES, SI EL ENUNCIADO NO LO ESPECIFICA, LO DEBES PONER
      * DE ACUERDO CON TU CRITERIO
@@ -96,7 +120,17 @@ public class App {
 
     */
 
+public static double raizc_aleo() {
+        try {
+            Random random = new Random();
+            int numero = random.nextInt(355) + 2;
+            return Math.sqrt(numero);
 
+        } catch (Exception e) {
+            return -1;
+        }
+
+    }
 
 
     /*4.	Diseñar y desarrollar una función que reciba un valor inicial y un valor final, para generar 900 números aleatorios 
@@ -198,5 +232,31 @@ public static int suma_ramdom(int cant) {
      * 
      * 
     */
+public static String simularSorteo() {
+        StringBuilder resultado = new StringBuilder();
+        Random random = new Random();
 
+        resultado.append("======PREMIOS MENORES=======\n");
+        for (int pr_m = 20; pr_m >= 6; pr_m--) {
+            int numeroPremiado = random.nextInt(10000); 
+            int serie = random.nextInt(51) + 100;      
+            resultado.append(String.format("Sorteo # %02d - Número Premiado %04d - Serie %03d\n", pr_m, numeroPremiado, serie));
+        }
+
+       
+        resultado.append("======PREMIOS SECOS=========\n");
+        for (int pr_s = 5; pr_s >= 2; pr_s--) {
+            int numeroPremiado = random.nextInt(10000); 
+            int serie = random.nextInt(51) + 100;      
+            resultado.append(String.format("Sorteo # %02d - Número Premiado %04d - Serie %03d\n", pr_s, numeroPremiado, serie));
+        }
+
+    
+        resultado.append("======Premio mayor==========\n");
+        int numeroPremiado = random.nextInt(10000);     
+        int serie = random.nextInt(51) + 100;           
+        resultado.append(String.format("Sorteo # 01 - Número Premiado %04d - Serie %03d\n", numeroPremiado, serie));
+
+        return resultado.toString(); 
+    }
 }
